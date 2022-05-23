@@ -20,14 +20,14 @@ function MovieSchedules({ weekday, day, children }) {
 export default function Schedule() {
     const { idMovies } = useParams();
     const [schedules, setSchedules] = useState([]);
-    const [images, setImages] = useState({});
+    const [movies, setMovies] = useState({});
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idMovies}/showtimes`);
 
         promise.then(response => {
             setSchedules(response.data.days);
-            setImages(response.data);
+            setMovies(response.data);
         });
     }, []);
 
@@ -50,8 +50,15 @@ export default function Schedule() {
                 )}
             </main>
             <Footer>
-                <img className="footer-img" src={images.posterURL} />
-                <div><h5>{images.title}</h5></div></Footer>
+                <div className="footer">
+                    <div className="poster">
+                        <img className="footer-img" src={movies.posterURL} />
+                    </div>
+                    <div className="footer-movie">
+                        <h5>{movies.title}</h5>
+                    </div>
+                </div>
+            </Footer>
         </>
     );
 }

@@ -15,11 +15,12 @@ export default function Forms({info, setInfo}) {
         newData.name = name;
         newData.cpf = cpf;
         setInfo(newData);
-        console.log(newData);
+        
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
+            ids: newData.ids, name: newData.name, cpf: newData.cpf
+        });
 
-        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", info);
-
-        promise.then(() => navigate("/sucesso"));
+        promise.then(() => navigate("/sucesso", {state: newData}));
     }
 
     return (

@@ -39,7 +39,8 @@ main,
 .seats,
 .seat,
 .status,
-form{
+form,
+.footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,6 +119,18 @@ footer {
     position: fixed;
     bottom: 0;
     display: flex;
+    align-self: flex-start;
+}
+
+footer .poster {
+    width: 64px;
+    height: 89px;
+    margin: 0 10px;
+}
+
+.footer {
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .footer-img {
@@ -125,7 +138,14 @@ footer {
     height: 72px;
 }
 
-.seats{
+.footer-movie{
+    margin-left: 14px;
+    color: #000000;
+    font-size: 26px;
+    line-height: 30.47px;
+}
+
+.seats {
     width: 327px;
     height: 202px;
     flex-wrap: wrap;
@@ -133,7 +153,7 @@ footer {
     margin-bottom: 16px;
 }
 
-.seat{
+.seat {
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -141,68 +161,75 @@ footer {
     border: 1px solid #808F9D;
 }
 
-h5{
-   color: #000000; 
-   font-size: 11px;
+h5 {
+    color: #000000;
+    font-size: 26px;
+    line-height: 30.47px;
 }
 
-.status{
+.status {
     width: 100%;
     height: 52px;
     justify-content: space-between;
 }
 
-.a{
+.a {
     flex-direction: column;
     font-size: 18px;
     color: #4E5A65;
 }
 
-.green{
+.green {
     background-color: #8DD7CF;
     border: 1px solid #1AAE9E;
 }
 
-.yellow{
+.yellow {
     background-color: #FBE192;
     border: 1px solid #F7C52B;
 }
 
-form{
+form {
     margin-top: 41px;
     font-size: 18px;
     line-height: 21.09px;
     flex-direction: column;
+    margin-bottom: 135px;
 }
 
-.forms{
-    width: 100%;
+.forms {
+    width: 327px;
     display: flex;
     flex-direction: column;
-    align-self: flex-start; 
-    
+    align-self: flex-start;
+    gap: 5px;
+    margin-bottom: 57px;
 }
 
-label{
+label {
+    width: 100%;
     height: 25px;
     color: #293845;
-    font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 
-input{
+input {
     width: 225px;
     height: 42px;
     font-size: 18px;
-    color: #FFFFFF; 
+    color: #FFFFFF;
     background-color: #E8833A;
     border-radius: 3px;
     border: none;
 }
 
-.forms input{
-   height: 51px;
-   background-color: #FFFFFF;
-   color: #4E5A65;
-   font-style: italic;
+.forms input {
+    width: 100%;
+    height: 51px;
+    background-color: #FFFFFF;
+    color: #4E5A65;
+    font-style: italic;
+    padding-left: 18px;
 }
 

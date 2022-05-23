@@ -1,21 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Forms from "./Forms";
 import Footer from '../Schedule/Footer';
-
-// function piked ({selected, id}){
-//     const arr = [];
-
-//     return(
-//         <>
-//             {!selected ? arr.push(id) : ""}
-//             {console.log(arr)}
-//         </>
-//     );
-
-// }
-
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
     const [selected, setSelected] = useState(false);
@@ -25,10 +12,19 @@ function IndividualSeat({ seat, status, id, info, setInfo }) {
         <>
             {status ?
                 <div className={select} onClick={() => {
+                    let newInfo = { ...info };
+
+                    if (selected) {
+                        newInfo.ids = newInfo.ids.filter((value) => value !== id);
+                        newInfo.number = newInfo.number.filter((value) => value !== seat);
+                        setSelected(!selected);
+                        setInfo(newInfo);
+                        return;
+                    }
+
                     setSelected(!selected);
-                    const newInfo = {...info};
-                    console.log(newInfo);
                     newInfo.ids.push(id)
+                    newInfo.number.push(seat)
                     setInfo(newInfo);
                 }}>
                     <h6>{seat}</h6>
@@ -44,13 +40,17 @@ function IndividualSeat({ seat, status, id, info, setInfo }) {
 export default function Seats() {
     const { idSeats } = useParams();
     const [seats, setSeats] = useState([]);
-    const [info, setInfo] = useState({ ids: [], name: '', cpf: '' });
+    const [movies, setMovies] = useState({});
+    const [time, setTime] = useState({});
+    const [info, setInfo] = useState({ ids: [], number: [], name: '', cpf: '' });
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSeats}/seats`);
 
         promise.then(response => {
             setSeats(response.data.seats);
+            setMovies(response.data.movie);
+            setTime(response.data);
         })
     }, []);
 
@@ -74,9 +74,19 @@ export default function Seats() {
                     <div className="status a"><div className="seat"></div>Disponível</div>
                     <div className="status a"><div className="seat yellow"></div>Indisponível</div>
                 </div>
-                <Forms info={info} setInfo={setInfo}/>
+                <Forms info={info} setInfo={setInfo} />
             </main>
-            <Footer></Footer>
+            <Footer>
+                <div className="footer">
+                    <div className="poster">
+                        <img className="footer-img" src={movies.posterURL} />
+                    </div>
+                    <div className="footer-movie">
+                        <h5>{movies.title}</h5>
+                        <div className="sessao">{time.name}</div>
+                    </div>
+                </div>
+            </Footer>
         </>
     );
 }
