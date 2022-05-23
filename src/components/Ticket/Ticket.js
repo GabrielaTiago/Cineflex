@@ -11,18 +11,18 @@ export default function Ticket() {
         <>
             <header><h1>CINEFLEX</h1></header>
             <main>
-                <div className="select"><h4>Pedido feito com sucesso!</h4></div>
+                <div className="select"><h4 className="sucess">Pedido feito com sucesso!</h4></div>
                 <div className="ticket">
-                    <h6>Filme e sessão</h6>
+                    <p className="tittle">Filme e sessão</p>
                     <p>Filme: {}</p>
                     <p>Sessão: {}</p>
                 </div>
                 <div className="ticket">
-                    <h6>Ingressos</h6>
+                    <p className="tittle">Ingressos</p>
                      {seat.map((value) =><p>Assento {value}</p>)}
                 </div>
                 <div className="ticket">
-                    <h6>Comprador</h6>
+                    <p className="tittle">Comprador</p>
                     <p>Nome: {info.name}</p>
                     <p>CPF: {info.cpf}</p>
                 </div>

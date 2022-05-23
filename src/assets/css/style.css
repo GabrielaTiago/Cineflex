@@ -138,7 +138,7 @@ footer .poster {
     height: 72px;
 }
 
-.footer-movie{
+.footer-movie {
     margin-left: 14px;
     color: #000000;
     font-size: 26px;
@@ -233,3 +233,36 @@ input {
     padding-left: 18px;
 }
 
+.sucess {
+    width: 150px;
+    font-size: 24px;
+    line-height: 28px;
+    word-wrap: break-word;
+    color: #247A6B;
+    text-align: center;
+}
+
+.ticket {
+    height: auto;
+    align-self: flex-start;
+    font-size: 22px;
+    line-height: 26px;
+    margin-left: 28px;
+    margin-bottom: 20px;
+}
+
+.tittle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+button{
+    width: 225px;
+    height: 42px;
+    font-size: 18px;
+    color: #FFFFFF;
+    background-color: #E8833A;
+    border-radius: 3px;
+    border: none;
+}
