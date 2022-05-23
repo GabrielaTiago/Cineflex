@@ -33,7 +33,7 @@ export default function HomeScreen() {
                     {posters.map((poster, index) => <ImagePoster
                         key={index}
                         source={poster.posterURL}
-                        identification={poster.id} />)}
+                        identification={poster.id} ></ImagePoster>)}
                 </div>
             </main>
         </>
