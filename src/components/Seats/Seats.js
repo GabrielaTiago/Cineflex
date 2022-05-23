@@ -1,16 +1,36 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Forms from "./Forms";
 import Footer from '../Schedule/Footer';
 
-function IndividualSeat({ seat, status }) {
+// function piked ({selected, id}){
+//     const arr = [];
+
+//     return(
+//         <>
+//             {!selected ? arr.push(id) : ""}
+//             {console.log(arr)}
+//         </>
+//     );
+
+// }
+
+
+function IndividualSeat({ seat, status, id, info, setInfo }) {
     const [selected, setSelected] = useState(false);
     const select = `seat ${selected ? "green" : ""}`;
 
     return (
         <>
             {status ?
-                <div className={select} onClick={() => setSelected(!selected)}>
+                <div className={select} onClick={() => {
+                    setSelected(!selected);
+                    const newInfo = {...info};
+                    console.log(newInfo);
+                    newInfo.ids.push(id)
+                    setInfo(newInfo);
+                }}>
                     <h6>{seat}</h6>
                 </div>
                 :
@@ -24,6 +44,7 @@ function IndividualSeat({ seat, status }) {
 export default function Seats() {
     const { idSeats } = useParams();
     const [seats, setSeats] = useState([]);
+    const [info, setInfo] = useState({ ids: [], name: '', cpf: '' });
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSeats}/seats`);
@@ -31,31 +52,29 @@ export default function Seats() {
         promise.then(response => {
             setSeats(response.data.seats);
         })
-    }, [])
+    }, []);
 
     return (
         <>
-            <header>CINEFLEX</header>
+            <header><h1>CINEFLEX</h1></header>
             <main>
                 <div className="select"><h3>Selecione o(s) assento(s)</h3></div>
                 <div className="seats">
-                    {seats.map((seat, index) => <IndividualSeat hey={index} seat={seat.name} status={seat.isAvailable}></IndividualSeat>)}
+                    {seats.map((seat, index) => <IndividualSeat
+                        hey={index}
+                        seat={seat.name}
+                        status={seat.isAvailable}
+                        id={seat.id}
+                        info={info}
+                        setInfo={setInfo}>
+                    </IndividualSeat>)}
                 </div>
                 <div className="status">
                     <div className="status a"><div className="seat green"></div>Selcionado</div>
                     <div className="status a"><div className="seat"></div>Disponível</div>
                     <div className="status a"><div className="seat yellow"></div>Indisponível</div>
                 </div>
-                <form>
-                    <div className="forms">
-                        <label>Nome do comprador:</label>
-                        <input type="text" placeholder="Digite seu nome..." />
-                        <label>CPF do comprador:</label>
-                        <input type="text" placeholder="Digite seu CPF..." />
-                    </div>
-
-                    <input type="submit" value="Reservar assento(s)" />
-                </form>
+                <Forms info={info} setInfo={setInfo}/>
             </main>
             <Footer></Footer>
         </>
