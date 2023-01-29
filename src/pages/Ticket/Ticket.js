@@ -1,7 +1,7 @@
 import { useState, useEffect  } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Ticket() {
+export function Ticket() {
     const location = useLocation();
     const info = location.state;
     const [seat, setSeat] = useState([]);

@@ -14,7 +14,7 @@ function ImagePoster({ source, identification }) {
 }
 
 
-export default function HomeScreen() {
+export function HomeScreen() {
     const [posters, setPosters] = useState([]);
 
     useEffect(() => {

@@ -17,7 +17,7 @@ function MovieSchedules({ weekday, day, children }) {
     );
 }
 
-export default function Schedule() {
+export function Schedule() {
     const { idMovies } = useParams();
     const [schedules, setSchedules] = useState([]);
     const [movies, setMovies] = useState({});

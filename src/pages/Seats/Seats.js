@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Forms from "./Forms";
-import Footer from '../Schedule/Footer';
+import Footer from '../../pages/Schedule/Footer';
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
     const [selected, setSelected] = useState(false);
@@ -37,7 +37,7 @@ function IndividualSeat({ seat, status, id, info, setInfo }) {
     );
 }
 
-export default function Seats() {
+export function Seats() {
     const { idSeats } = useParams();
     const [seats, setSeats] = useState([]);
     const [movies, setMovies] = useState({});
