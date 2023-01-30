@@ -1,64 +1,77 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Footer from './Footer';
-
+import { getSessions } from "../../services/moviesApi";
+import Footer from "./Footer";
 
 function MovieSchedules({ weekday, day, children }) {
-    return (
-        <div className="schedules-available">
-            <div className="schedules-day"><h4>{weekday} - {day}</h4></div>
-            <div className="schedules-time">
-                <div className="buttons">
-                    {children}
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <div className="schedules-available">
+      <div className="schedules-day">
+        <h4>
+          {weekday} - {day}
+        </h4>
+      </div>
+      <div className="schedules-time">
+        <div className="buttons">{children}</div>
+      </div>
+    </div>
+  );
 }
 
 export function Schedule() {
-    const { idMovies } = useParams();
-    const [schedules, setSchedules] = useState([]);
-    const [movies, setMovies] = useState({});
+  const { idMovies } = useParams();
+  const [schedules, setSchedules] = useState([]);
+  const [movies, setMovies] = useState({});
 
-    useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idMovies}/showtimes`);
+  useEffect(() => {
+    fetchSessions(idMovies);
+  }, [idMovies]);
 
-        promise.then(response => {
-            setSchedules(response.data.days);
-            setMovies(response.data);
-        });
-    }, []);
+  async function fetchSessions(idMovies) {
+    try {
+      const response = await getSessions(idMovies);
+      setSchedules(response.days);
+      setMovies(response);
+    } catch (err) {
+      alert(
+        `Erro ${err} - Problemas ao acessar as sessões disponíveis, por favor atualize a página`
+      );
+    }
+  }
 
-    return (
-        <>
-            <header><h1>CINEFLEX</h1></header>
-            <main className='schedules'>
-                <div className="select"><h3>Selecione o horário</h3></div>
-                {schedules.map((schedule, index) =>
-                    <MovieSchedules
-                        key={index}
-                        weekday={schedule.weekday}
-                        day={schedule.date}
-                    >
-                        {schedule.showtimes.map((schedule) =>
-                            <Link to={`/assento/${schedule.id}`}>
-                                <button className="time-button">{schedule.name}</button>
-                            </Link>)}
-                    </MovieSchedules>
-                )}
-            </main>
-            <Footer>
-                <div className="footer">
-                    <div className="poster">
-                        <img className="footer-img" src={movies.posterURL} />
-                    </div>
-                    <div className="footer-movie">
-                        <h5>{movies.title}</h5>
-                    </div>
-                </div>
-            </Footer>
-        </>
-    );
+  return (
+    <>
+      <header>
+        <h1>CINEFLEX</h1>
+      </header>
+      <main className="schedules">
+        <div className="select">
+          <h3>Selecione o horário</h3>
+        </div>
+        {schedules.map((schedule, index) => (
+          <MovieSchedules
+            key={index}
+            weekday={schedule.weekday}
+            day={schedule.date}
+          >
+            {schedule.showtimes.map((schedule) => (
+              <Link to={`/assento/${schedule.id}`}>
+                <button className="time-button">{schedule.name}</button>
+              </Link>
+            ))}
+          </MovieSchedules>
+        ))}
+      </main>
+      <Footer>
+        <div className="footer">
+          <div className="poster">
+            <img className="footer-img" src={movies.posterURL} />
+          </div>
+          <div className="footer-movie">
+            <h5>{movies.title}</h5>
+          </div>
+        </div>
+      </Footer>
+    </>
+  );
 }
