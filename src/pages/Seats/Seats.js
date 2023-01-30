@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Forms from "./Forms";
 import Footer from "../../pages/Schedule/Footer";
 import { getSeats } from "../../services/seatsApi";
-import { Header } from "../../components";
+import { Header, PageTitle } from "../../components";
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
   const [selected, setSelected] = useState(false);
@@ -46,7 +46,7 @@ export function Seats() {
   const { idSeats } = useParams();
   const [seats, setSeats] = useState([]);
   const [movies, setMovies] = useState({});
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
   const [info, setInfo] = useState({ ids: [], number: [], name: "", cpf: "" });
 
   useEffect(() => {
@@ -70,9 +70,7 @@ export function Seats() {
     <>
       <Header />
       <main>
-        <div className="select">
-          <h3>Selecione o(s) assento(s)</h3>
-        </div>
+        <PageTitle title={"Selecione o(s) assento(s)"} />
         <div className="seats">
           {seats.map((seat, index) => (
             <IndividualSeat

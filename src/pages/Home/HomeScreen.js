@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header } from "../../components";
+import { Header, PageTitle } from "../../components";
 import { Movie } from "./components";
 import { getMovies } from "../../services/moviesApi";
 
@@ -25,9 +25,7 @@ export function HomeScreen() {
     <>
       <Header />
       <main>
-        <div className="select">
-          <h3>Selecione o filme</h3>
-        </div>
+        <PageTitle title={"Selecione o filme"} />
         <div className="posters-container">
           {posters.map((movie) => {
             const { id, title, posterURL } = movie;

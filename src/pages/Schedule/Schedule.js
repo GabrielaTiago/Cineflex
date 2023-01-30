@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Header } from "../../components";
+import { Header, PageTitle } from "../../components";
 import { getSessions } from "../../services/moviesApi";
 import Footer from "./Footer";
 
@@ -44,9 +44,7 @@ export function Schedule() {
     <>
       <Header />
       <main className="schedules">
-        <div className="select">
-          <h3>Selecione o horário</h3>
-        </div>
+        <PageTitle title={"Selecione o horário"} />
         {schedules.map((schedule, index) => (
           <MovieSchedules
             key={index}

@@ -1,6 +1,6 @@
 import { useState, useEffect  } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Header } from "../../components";
+import { Header, PageTitle } from "../../components";
 
 export function Ticket() {
     const location = useLocation();
@@ -12,7 +12,7 @@ export function Ticket() {
         <>
             <Header />
             <main>
-                <div className="select"><h4 className="sucess">Pedido feito com sucesso!</h4></div>
+                <PageTitle title={"Pedido feito com sucesso!"} />
                 <div className="ticket">
                     <p className="tittle">Filme e sessão</p>
                     <p>Filme: {}</p>
