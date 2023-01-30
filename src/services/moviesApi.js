@@ -5,3 +5,9 @@ export function getMovies() {
 
   return response;
 }
+
+export function getSessions(id) {
+  const response = api.get(`/movies/${id}/showtimes`);
+
+  return response;
+}
