@@ -10,20 +10,7 @@ body {
   font-weight: 400;
 }
 
-header {
-  background-color: #c3cfd9;
-  width: 100%;
-  height: 67px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-h1 {
-  font-size: 34px;
-  line-height: 39.84px;
-  color: #e8833a;
-}
 
 h3 {
   font-size: 24px;

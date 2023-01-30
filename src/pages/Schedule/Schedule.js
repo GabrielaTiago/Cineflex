@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Header } from "../../components";
 import { getSessions } from "../../services/moviesApi";
 import Footer from "./Footer";
 
@@ -41,9 +42,7 @@ export function Schedule() {
 
   return (
     <>
-      <header>
-        <h1>CINEFLEX</h1>
-      </header>
+      <Header />
       <main className="schedules">
         <div className="select">
           <h3>Selecione o horário</h3>

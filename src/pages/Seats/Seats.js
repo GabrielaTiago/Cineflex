@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Forms from "./Forms";
 import Footer from "../../pages/Schedule/Footer";
 import { getSeats } from "../../services/seatsApi";
+import { Header } from "../../components";
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
   const [selected, setSelected] = useState(false);
@@ -67,9 +68,7 @@ export function Seats() {
 
   return (
     <>
-      <header>
-        <h1>CINEFLEX</h1>
-      </header>
+      <Header />
       <main>
         <div className="select">
           <h3>Selecione o(s) assento(s)</h3>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Header } from "../../components";
 import { getMovies } from "../../services/moviesApi";
 
 function ImagePoster({ source, identification }) {
@@ -33,9 +34,7 @@ export function HomeScreen() {
 
   return (
     <>
-      <header>
-        <h1>CINEFLEX</h1>
-      </header>
+      <Header />
       <main>
         <div className="select">
           <h3>Selecione o filme</h3>

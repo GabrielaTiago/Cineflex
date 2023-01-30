@@ -1,5 +1,6 @@
 import { useState, useEffect  } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Header } from "../../components";
 
 export function Ticket() {
     const location = useLocation();
@@ -9,7 +10,7 @@ export function Ticket() {
     useEffect(() => {setSeat(info.number)},[]);
     return (
         <>
-            <header><h1>CINEFLEX</h1></header>
+            <Header />
             <main>
                 <div className="select"><h4 className="sucess">Pedido feito com sucesso!</h4></div>
                 <div className="ticket">
