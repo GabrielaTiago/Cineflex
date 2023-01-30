@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Header } from "../../components";
+import { Movie } from "./components";
 import { getMovies } from "../../services/moviesApi";
-
-function ImagePoster({ source, identification }) {
-  const id = Number(identification);
-  return (
-    <div id={id} className="poster">
-      <Link to={`/sessao/${id}`}>
-        <img className="img-poster" alt="poster" src={source} />
-      </Link>
-    </div>
-  );
-}
 
 export function HomeScreen() {
   const [posters, setPosters] = useState([]);
@@ -40,13 +29,13 @@ export function HomeScreen() {
           <h3>Selecione o filme</h3>
         </div>
         <div className="posters-container">
-          {posters.map((poster, index) => (
-            <ImagePoster
-              key={index}
-              source={poster.posterURL}
-              identification={poster.id}
-            ></ImagePoster>
-          ))}
+          {posters.map((movie) => {
+            const { id, title, posterURL } = movie;
+
+            return (
+              <Movie key={id} id={id} title={title} posterURL={posterURL} />
+            );
+          })}
         </div>
       </main>
     </>
