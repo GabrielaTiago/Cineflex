@@ -13,6 +13,10 @@ export function MoviesContextProvider({ children }) {
     schedule: "",
     weekday: "",
     day: "",
+    ids: [],
+    number: [],
+    name: "",
+    cpf: "",
   });
 
   const contextValue = useMemo(() => {

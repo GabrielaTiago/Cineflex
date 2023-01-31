@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components";
+import { useMoviesContext } from "../../../../contexts";
 import { postSeats } from "../../../../services/seatsApi";
 import { Box, Form, Input, Label } from "./Styles";
 
 export function Forms({ info, setInfo }) {
+  const { movieData, setMovieData } = useMoviesContext();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
@@ -21,14 +23,23 @@ export function Forms({ info, setInfo }) {
     setInfo(newData);
 
     try {
+      const { ids, number, name, cpf } = newData;
+      
       const response = await postSeats({
-        ids: newData.ids,
-        name: newData.name,
-        cpf: newData.cpf,
+        ids,
+        name,
+        cpf,
       });
 
       if (response) {
-        navigate("/sucesso", { state: newData });
+        setMovieData({
+          ...movieData,
+          ids,
+          number,
+          name,
+          cpf,
+        });
+        navigate("/sucesso");
       }
     } catch (err) {
       alert(
