@@ -10,27 +10,3 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-
-.sucess {
-  width: 150px;
-  font-size: 24px;
-  line-height: 28px;
-  word-wrap: break-word;
-  color: #247a6b;
-  text-align: center;
-}
-
-.ticket {
-  height: auto;
-  align-self: flex-start;
-  font-size: 22px;
-  line-height: 26px;
-  margin-left: 28px;
-  margin-bottom: 20px;
-}
-
-.tittle {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 28px;
-}
