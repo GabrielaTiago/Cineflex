@@ -3,44 +3,8 @@ import { useParams } from "react-router-dom";
 import Forms from "./Forms";
 import { getSeats } from "../../services/seatsApi";
 import { Footer, Header, PageTitle } from "../../components";
-import { Caption } from "./components";
-
-function IndividualSeat({ seat, status, id, info, setInfo }) {
-  const [selected, setSelected] = useState(false);
-  const select = `seat ${selected ? "green" : ""}`;
-
-  return (
-    <>
-      {status ? (
-        <div
-          className={select}
-          onClick={() => {
-            let newInfo = { ...info };
-
-            if (selected) {
-              newInfo.ids = newInfo.ids.filter((value) => value !== id);
-              newInfo.number = newInfo.number.filter((value) => value !== seat);
-              setSelected(!selected);
-              setInfo(newInfo);
-              return;
-            }
-
-            setSelected(!selected);
-            newInfo.ids.push(id);
-            newInfo.number.push(seat);
-            setInfo(newInfo);
-          }}
-        >
-          <h6>{seat}</h6>
-        </div>
-      ) : (
-        <div className="seat yellow">
-          <h6>{seat}</h6>
-        </div>
-      )}
-    </>
-  );
-}
+import { Caption, RoomSeats } from "./components";
+import { Container, Main, SeatsContainer } from "./Styles";
 
 export function Seats() {
   const { idSeats } = useParams();
@@ -69,23 +33,28 @@ export function Seats() {
   return (
     <>
       <Header />
-      <main>
+      <Main>
         <PageTitle title={"Selecione o(s) assento(s)"} />
-        <div className="seats">
-          {seats.map((seat, index) => (
-            <IndividualSeat
-              hey={index}
-              seat={seat.name}
-              status={seat.isAvailable}
-              id={seat.id}
-              info={info}
-              setInfo={setInfo}
-            ></IndividualSeat>
-          ))}
-        </div>
-        <Caption />
-        <Forms info={info} setInfo={setInfo} />
-      </main>
+        <SeatsContainer>
+          <Container>
+            {seats.map((seat) => {
+              const { id, name, isAvailable } = seat;
+              return (
+                <RoomSeats
+                  key={id}
+                  id={id}
+                  number={name}
+                  isAvailable={isAvailable}
+                  info={info}
+                  setInfo={setInfo}
+                />
+              );
+            })}
+          </Container>
+          <Caption />
+          <Forms info={info} setInfo={setInfo} />
+        </SeatsContainer>
+      </Main>
       <Footer poster={movies.posterURL} title={movies.title} schedule={time} />
     </>
   );

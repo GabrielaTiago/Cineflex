@@ -11,40 +11,11 @@ body {
   font-weight: 400;
 }
 
-.seats,
-.seat,
-.status,
 form,
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.seats {
-  width: 327px;
-  height: 202px;
-  flex-wrap: wrap;
-  gap: 18px 7px;
-  margin-bottom: 16px;
-}
-
-.seat {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background-color: #c3cfd9;
-  border: 1px solid #808f9d;
-}
-
-.green {
-  background-color: #8dd7cf;
-  border: 1px solid #1aae9e;
-}
-
-.yellow {
-  background-color: #fbe192;
-  border: 1px solid #f7c52b;
 }
 
 form {
