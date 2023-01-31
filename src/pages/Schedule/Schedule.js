@@ -1,22 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Footer, Header, PageTitle } from "../../components";
+import { Session } from "./components";
 import { getSessions } from "../../services/moviesApi";
-
-function MovieSchedules({ weekday, day, children }) {
-  return (
-    <div className="schedules-available">
-      <div className="schedules-day">
-        <h4>
-          {weekday} - {day}
-        </h4>
-      </div>
-      <div className="schedules-time">
-        <div className="buttons">{children}</div>
-      </div>
-    </div>
-  );
-}
+import { Main, SchedulesContainer } from "./Styles";
 
 export function Schedule() {
   const { idMovies } = useParams();
@@ -42,22 +29,22 @@ export function Schedule() {
   return (
     <>
       <Header />
-      <main className="schedules">
+      <Main>
         <PageTitle title={"Selecione o horário"} />
-        {schedules.map((schedule, index) => (
-          <MovieSchedules
-            key={index}
-            weekday={schedule.weekday}
-            day={schedule.date}
-          >
-            {schedule.showtimes.map((schedule) => (
-              <Link to={`/assento/${schedule.id}`}>
-                <button className="time-button">{schedule.name}</button>
-              </Link>
-            ))}
-          </MovieSchedules>
-        ))}
-      </main>
+        <SchedulesContainer>
+          {schedules.map((session) => {
+            const { id, weekday, date, showtimes } = session;
+            return (
+              <Session
+                key={id}
+                weekday={weekday}
+                day={date}
+                schedules={showtimes}
+              />
+            );
+          })}
+        </SchedulesContainer>
+      </Main>
       <Footer poster={movies.posterURL} title={movies.title} schedule={""} />
     </>
   );
