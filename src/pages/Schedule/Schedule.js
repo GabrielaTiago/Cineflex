@@ -4,21 +4,27 @@ import { Footer, Header, PageTitle } from "../../components";
 import { Session } from "./components";
 import { getSessions } from "../../services/moviesApi";
 import { Main, SchedulesContainer } from "./Styles";
+import { useMoviesContext } from "../../contexts";
 
 export function Schedule() {
   const { idMovies } = useParams();
   const [schedules, setSchedules] = useState([]);
-  const [movies, setMovies] = useState({});
+  const { movieData, setMovieData } = useMoviesContext();
 
   useEffect(() => {
     fetchSessions(idMovies);
+    // eslint-disable-next-line
   }, [idMovies]);
 
   async function fetchSessions(idMovies) {
     try {
       const response = await getSessions(idMovies);
       setSchedules(response.days);
-      setMovies(response);
+      setMovieData({
+        ...movieData,
+        title: response.title,
+        poster: response.posterURL,
+      });
     } catch (err) {
       alert(
         `Erro ${err} - Problemas ao acessar as sessões disponíveis, por favor atualize a página`
@@ -45,7 +51,7 @@ export function Schedule() {
           })}
         </SchedulesContainer>
       </Main>
-      <Footer poster={movies.posterURL} title={movies.title} schedule={""} />
+      <Footer />
     </>
   );
 }

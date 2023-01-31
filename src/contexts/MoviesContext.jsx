@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 
 const MoviesContext = createContext();
 
@@ -7,5 +7,21 @@ export const useMoviesContext = () => {
 };
 
 export function MoviesContextProvider({ children }) {
-  return <MoviesContext.Provider>{children}</MoviesContext.Provider>;
+  const [movieData, setMovieData] = useState({
+    poster: "",
+    title: "",
+    schedule: "",
+    weekday: "",
+    day: "",
+  });
+
+  const contextValue = useMemo(() => {
+    return { movieData, setMovieData };
+  }, [movieData, setMovieData]);
+
+  return (
+    <MoviesContext.Provider value={contextValue}>
+      {children}
+    </MoviesContext.Provider>
+  );
 }
