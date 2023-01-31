@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Forms from "./Forms";
 import { getSeats } from "../../services/seatsApi";
 import { Footer, Header, PageTitle } from "../../components";
+import { Caption } from "./components";
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
   const [selected, setSelected] = useState(false);
@@ -82,17 +83,7 @@ export function Seats() {
             ></IndividualSeat>
           ))}
         </div>
-        <div className="status">
-          <div className="status a">
-            <div className="seat green"></div>Selcionado
-          </div>
-          <div className="status a">
-            <div className="seat"></div>Disponível
-          </div>
-          <div className="status a">
-            <div className="seat yellow"></div>Indisponível
-          </div>
-        </div>
+        <Caption />
         <Forms info={info} setInfo={setInfo} />
       </main>
       <Footer poster={movies.posterURL} title={movies.title} schedule={time} />
