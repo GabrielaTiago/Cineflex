@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Forms from "./Forms";
 import { getSeats } from "../../services/seatsApi";
 import { Footer, Header, PageTitle } from "../../components";
-import { Caption, RoomSeats } from "./components";
+import { Caption, Forms, RoomSeats } from "./components";
 import { Container, Main, SeatsContainer } from "./Styles";
 
 export function Seats() {
