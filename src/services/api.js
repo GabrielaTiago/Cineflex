@@ -13,7 +13,7 @@ const queryStringBuilder = (query) =>
     : "";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: "https://mock-api.driven.com.br/api/v5/cineflex"
 });
 
 for (const method of methods) {

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Header, PageTitle } from "../../components";
+import { Footer, Header, PageTitle } from "../../components";
 import { getSessions } from "../../services/moviesApi";
-import Footer from "./Footer";
 
 function MovieSchedules({ weekday, day, children }) {
   return (
@@ -59,16 +58,7 @@ export function Schedule() {
           </MovieSchedules>
         ))}
       </main>
-      <Footer>
-        <div className="footer">
-          <div className="poster">
-            <img className="footer-img" src={movies.posterURL} />
-          </div>
-          <div className="footer-movie">
-            <h5>{movies.title}</h5>
-          </div>
-        </div>
-      </Footer>
+      <Footer poster={movies.posterURL} title={movies.title} schedule={""} />
     </>
   );
 }

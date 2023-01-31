@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Forms from "./Forms";
-import Footer from "../../pages/Schedule/Footer";
 import { getSeats } from "../../services/seatsApi";
-import { Header, PageTitle } from "../../components";
+import { Footer, Header, PageTitle } from "../../components";
 
 function IndividualSeat({ seat, status, id, info, setInfo }) {
   const [selected, setSelected] = useState(false);
@@ -96,17 +95,7 @@ export function Seats() {
         </div>
         <Forms info={info} setInfo={setInfo} />
       </main>
-      <Footer>
-        <div className="footer">
-          <div className="poster">
-            <img className="footer-img" src={movies.posterURL} />
-          </div>
-          <div className="footer-movie">
-            <h5>{movies.title}</h5>
-            <div className="sessao">{time}</div>
-          </div>
-        </div>
-      </Footer>
+      <Footer poster={movies.posterURL} title={movies.title} schedule={time} />
     </>
   );
 }

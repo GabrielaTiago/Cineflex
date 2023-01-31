@@ -11,13 +11,6 @@ body {
   font-weight: 400;
 }
 
-h3 {
-  font-size: 24px;
-}
-
-main,
-.select-movie,
-.posters-container,
 .schedules-available,
 .schedules-day,
 .seats,
@@ -28,17 +21,6 @@ form,
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-main {
-  flex-direction: column;
-}
-
-.posters-container {
-  width: 100%;
-  height: 100%;
-  gap: 11px 30px;
-  flex-wrap: wrap;
 }
 
 .schedules {
@@ -75,40 +57,6 @@ h4 {
   color: #ffffff;
   background-color: #e8833a;
   border: none;
-}
-
-footer {
-  width: 100%;
-  height: 117px;
-  background-color: #dfe6ed;
-  border-top: 1px solid #9eadba;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-self: flex-start;
-}
-
-footer .poster {
-  width: 64px;
-  height: 89px;
-  margin: 0 10px;
-}
-
-.footer {
-  width: 100%;
-  justify-content: flex-start;
-}
-
-.footer-img {
-  width: 48px;
-  height: 72px;
-}
-
-.footer-movie {
-  margin-left: 14px;
-  color: #000000;
-  font-size: 26px;
-  line-height: 30.47px;
 }
 
 .seats {
