@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Header, PageTitle } from "../../components";
 import { Movie } from "./components";
 import { getMovies } from "../../services/moviesApi";
+import { Main, MoviesContainer } from "./Styles";
 
 export function HomeScreen() {
   const [posters, setPosters] = useState([]);
@@ -24,9 +25,9 @@ export function HomeScreen() {
   return (
     <>
       <Header />
-      <main>
+      <Main>
         <PageTitle title={"Selecione o filme"} />
-        <div className="posters-container">
+        <MoviesContainer>
           {posters.map((movie) => {
             const { id, title, posterURL } = movie;
 
@@ -34,8 +35,8 @@ export function HomeScreen() {
               <Movie key={id} id={id} title={title} posterURL={posterURL} />
             );
           })}
-        </div>
-      </main>
+        </MoviesContainer>
+      </Main>
     </>
   );
 }
