@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postSeats } from "../../services/seatsApi";
+import { Button } from "../../../../components";
+import { postSeats } from "../../../../services/seatsApi";
+import { Box, Form, Input, Label } from "./Styles";
 
-export default function Forms({ info, setInfo }) {
+export function Forms({ info, setInfo }) {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
@@ -36,10 +38,10 @@ export default function Forms({ info, setInfo }) {
   }
 
   return (
-    <form onSubmit={form}>
-      <div className="forms">
-        <label>Nome do comprador:</label>
-        <input
+    <Form onSubmit={form}>
+      <Box>
+        <Label>Nome do comprador:</Label>
+        <Input
           type="text"
           placeholder="Digite seu nome..."
           onChange={(e) => {
@@ -48,8 +50,10 @@ export default function Forms({ info, setInfo }) {
           value={name}
           required
         />
-        <label>CPF do comprador:</label>
-        <input
+      </Box>
+      <Box>
+        <Label>CPF do comprador:</Label>
+        <Input
           type="text"
           placeholder="Digite seu CPF..."
           onChange={(e) => setCpf(e.target.value)}
@@ -59,9 +63,9 @@ export default function Forms({ info, setInfo }) {
           maxLength={11}
           pattern="\d*"
         />
-      </div>
+      </Box>
 
-      <input type="submit" value="Reservar assento(s)" />
-    </form>
+      <Button type="submit">Reservar assento(s)</Button>
+    </Form>
   );
 }
