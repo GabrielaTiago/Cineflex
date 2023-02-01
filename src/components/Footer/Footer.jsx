@@ -13,7 +13,7 @@ export function Footer() {
       <Info>
         <Title>{title}</Title>
         <Schedule>
-          {weekday} - {schedule}
+          {weekday} {schedule !== "" ? `- ${schedule}` : ""}
         </Schedule>
       </Info>
     </FooterStyles>
