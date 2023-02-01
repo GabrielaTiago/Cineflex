@@ -4,6 +4,10 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  button {
+    min-width: 225px;
+  }
 `;
 
 const TicketContainer = styled.div`
