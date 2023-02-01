@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button, Header } from "../../components";
+import { Header } from "../../components";
 import { useMoviesContext } from "../../contexts";
 import { formatCPF } from "../../utils";
-import { PageTitle, Text, Title, Wrapper } from "./components";
+import { Button, PageTitle, Text, Title, Wrapper } from "./components";
 import { Main, TicketContainer } from "./Styles";
 
 export function Ticket() {
@@ -43,9 +42,7 @@ export function Ticket() {
           </Wrapper>
         </TicketContainer>
 
-        <Link to="/">
-          <Button>Voltar para a Home</Button>
-        </Link>
+        <Button />
       </Main>
     </>
   );
