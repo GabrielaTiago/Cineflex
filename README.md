@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+<p align="center"><img src="public/favicon.ico" height="80px"/></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# <p align="center">Cineflex</p>
 
-## Available Scripts
+#### <p align="center">App de cinema</p>
 
-In the project directory, you can run:
+<p align="center">
+   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"  height="30px"/>
 
-### `npm start`
+   <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"  height="30px"/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"  height="30px"/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"  height="30px"/>
 
-### `npm test`
+   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E"  height="30px"/>
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$~$
 
-### `npm run build`
+### :clipboard: Descrição
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este é um projeto SPA (Single Page Application) construído com React que permite aos usuários escolher um filme, horário e assentos disponíveis para compra de ingressos de cinema. O projeto consome uma API externa através do axios e gera um bilhete com as escolhas do usuário. Com uma interface intuitiva e fácil de usar, este projeto oferece aos usuários uma experiência de seleção de ingressos de cinema simples e eficiente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### :movie_camera: [Acesse aqui](https://cineflex-gabrielatiago.vercel.app)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### :rocket: Rodando o projeto localmente
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Este projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app), portanto, certifique-se de ter a última versão estável do [Node.js](https://nodejs.org/en/download) e [npm](https://www.npmjs.com/) rodando localmente.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Primeiro de tudo, clone este projeto ou faça o download do ZIP.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para realizar o clone, no terminal de sua máquina, utilize o [git](https://git-scm.com/) e insira o seguinte comando:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+    git clone git@github.com:GabrielaTiago/Cineflex.git
+```
 
-## Learn More
+Entre na pasta do projeto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+    cd Cineflex
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Execute o seguinte comando para instalar as dependências.
 
-### Code Splitting
+```bash
+    npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Depois de instalar as dependências, execute o comando para iniciar a aplicação.
 
-### Analyzing the Bundle Size
+```bash
+    npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A aplicação será iniciada em "http://localhost:3000" no seu navegador.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### :computer: Telas
 
-### Advanced Configuration
+##### Desktop:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![viewing the app on a large screen](screens/images/large-screen.gif)
 
-### Deployment
+##### Tablet:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![viewing the app on a medium screen](screens/images/medium-screen.gif)
 
-### `npm run build` fails to minify
+##### Mobile:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![viewing the app on a mobile screen](screens/images/mobile-screen.gif)
+
+---
+
+### 🎮 Usando
+
+https://user-images.githubusercontent.com/77814822/216130702-436296db-8edf-42b1-90c6-df13fa7d036b.mp4
+
+---
+
+### :books: Lições Aprendidas
+
+- SPA
+- Consumir API com axios
+- Links internos
+- Rotas
+- Paginação
+- useMemo
+- Regex
+- Styled Components
+
+---
+
+### :bulb: Reconhecimentos
+
+- [Badges para Github](https://github.com/alexandresanlim/Badges4-README.md-Profile#-database-)
+- [README Inspiração de README](https://gist.github.com/luanalessa/7f98467a5ed62d00dcbde67d4556a1e4#file-readme-md)
+- [Driven Education](https://www.driven.com.br)
+- [Máscara CPF](https://github.com/JoaoLucas8760/MaskForm/blob/main/Readme.md?plain=1)
+
+---
+
+### 👩‍🦱 Autora
+
+- Gabriela Tiago é uma aluna de desenvolvimento web de Fullstack na Driven Education. Percorrendo o caminho do conhecimento, buscando aprimorar suas habilidades técnicas e de softskills, para que ela possa melhorar o trabalho que desenvolve.
+
+$~$
+
+[🔝 De volta ao topo](#cineflex)
