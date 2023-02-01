@@ -7,6 +7,10 @@ const HeaderStyles = styled.header`
   justify-content: center;
   align-items: center;
   background-color: #c3cfd9;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Title = styled.h1`
