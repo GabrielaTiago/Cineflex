@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Header } from "../../components";
+import { useMoviesContext } from "../../contexts";
 import { PageTitle, Text, Title, Wrapper } from "./components";
 import { Main, TicketContainer } from "./Styles";
 
 export function Ticket() {
-  const location = useLocation();
-  const info = location.state;
   const [seat, setSeat] = useState([]);
+  const { movieData } = useMoviesContext();
+  const { title, day, schedule, number, name, cpf } = movieData;
 
   useEffect(() => {
-    setSeat(info.number);
-  }, [info.number]);
+    setSeat(number);
+  }, [number]);
 
   return (
     <>
@@ -21,8 +22,10 @@ export function Ticket() {
         <TicketContainer>
           <Wrapper>
             <Title>Filme e sessão</Title>
-            <Text>Filme: {}</Text>
-            <Text>Sessão: {}</Text>
+            <Text>Filme: {title}</Text>
+            <Text>
+              Sessão: {day} - {schedule}
+            </Text>
           </Wrapper>
 
           <Wrapper>
@@ -34,8 +37,8 @@ export function Ticket() {
 
           <Wrapper>
             <Title>Comprador</Title>
-            <Text>Nome: {info.name}</Text>
-            <Text>CPF: {info.cpf}</Text>
+            <Text>Nome: {name}</Text>
+            <Text>CPF: {cpf}</Text>
           </Wrapper>
         </TicketContainer>
 

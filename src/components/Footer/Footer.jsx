@@ -1,6 +1,10 @@
+import { useMoviesContext } from "../../contexts";
 import { FooterStyles, Info, Movie, Poster, Schedule, Title } from "./Styles";
 
-export function Footer({ poster, title, schedule }) {
+export function Footer() {
+  const { movieData } = useMoviesContext();
+  const { poster, title, schedule, weekday } = movieData;
+
   return (
     <FooterStyles>
       <Movie>
@@ -8,7 +12,9 @@ export function Footer({ poster, title, schedule }) {
       </Movie>
       <Info>
         <Title>{title}</Title>
-        <Schedule>{schedule}</Schedule>
+        <Schedule>
+          {weekday} - {schedule}
+        </Schedule>
       </Info>
     </FooterStyles>
   );

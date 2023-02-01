@@ -10,7 +10,15 @@ export function Session({ weekday, day, schedules }) {
       <Schedules>
         {schedules.map((schedule) => {
           const { id, name } = schedule;
-          return <Schedule key={id} id={id} time={name} />;
+          return (
+            <Schedule
+              key={id}
+              id={id}
+              time={name}
+              weekday={weekday}
+              day={day}
+            />
+          );
         })}
       </Schedules>
     </Container>

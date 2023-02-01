@@ -8,9 +8,6 @@ import { Container, Main, SeatsContainer } from "./Styles";
 export function Seats() {
   const { idSeats } = useParams();
   const [seats, setSeats] = useState([]);
-  const [movies, setMovies] = useState({});
-  const [time, setTime] = useState("");
-  const [info, setInfo] = useState({ ids: [], number: [], name: "", cpf: "" });
 
   useEffect(() => {
     fetchSeats(idSeats);
@@ -18,10 +15,8 @@ export function Seats() {
 
   async function fetchSeats(idSeats) {
     try {
-      const { name, movie, seats } = await getSeats(idSeats);
+      const { seats } = await getSeats(idSeats);
       setSeats(seats);
-      setMovies(movie);
-      setTime(name);
     } catch (err) {
       alert(
         `Erro ${err} - Problemas ao carregar assentos, por favor atualize a página`
@@ -44,17 +39,15 @@ export function Seats() {
                   id={id}
                   number={name}
                   isAvailable={isAvailable}
-                  info={info}
-                  setInfo={setInfo}
                 />
               );
             })}
           </Container>
           <Caption />
-          <Forms info={info} setInfo={setInfo} />
+          <Forms />
         </SeatsContainer>
       </Main>
-      <Footer poster={movies.posterURL} title={movies.title} schedule={time} />
+      <Footer />
     </>
   );
 }
