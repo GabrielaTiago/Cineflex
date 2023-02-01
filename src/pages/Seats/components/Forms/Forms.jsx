@@ -3,25 +3,52 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components";
 import { useMoviesContext } from "../../../../contexts";
 import { postSeats } from "../../../../services/seatsApi";
+import { Error } from "./Error/Error";
 import { Box, Form, Input, Label } from "./Styles";
+import { cpfValidations, nameValidations } from "./Validations";
 
 export function Forms() {
   const { movieData, setMovieData } = useMoviesContext();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
+  const [error, setError] = useState({
+    nameError: false,
+    nameErrMsg: "",
+    cpfError: false,
+    cpfErrMsg: "",
+    disabledBtn: true,
+  });
+  const { nameError, nameErrMsg, cpfError, cpfErrMsg, disabledBtn } = error;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    reserveSeats();
+
+    const seatsSelection = movieData.ids.length > 0;
+    const noNameErrors = nameValidations(name, error, setError);
+    const noCpfErrors = cpfValidations(cpf, error, setError);
+
+    if (noNameErrors && noCpfErrors && seatsSelection) reserveSeats();
   };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+    setError({
+      ...error,
+      disabledBtn: false,
+      nameError: false,
+      cpfError: false,
+    });
   };
 
   const handleCpfChange = (e) => {
     setCpf(e.target.value);
+    setError({
+      ...error,
+      disabledBtn: false,
+      nameError: false,
+      cpfError: false,
+    });
   };
 
   async function reserveSeats() {
@@ -59,8 +86,8 @@ export function Forms() {
           placeholder="Digite seu nome..."
           onChange={handleNameChange}
           value={name}
-          required
         />
+        {nameError && <Error errMsg={nameErrMsg} />}
       </Box>
       <Box>
         <Label>CPF do comprador:</Label>
@@ -69,14 +96,13 @@ export function Forms() {
           placeholder="Digite seu CPF..."
           onChange={handleCpfChange}
           value={cpf}
-          required
-          minLength={11}
-          maxLength={11}
-          pattern="\d*"
         />
+        {cpfError && <Error errMsg={cpfErrMsg} />}
       </Box>
 
-      <Button type="submit">Reservar assento(s)</Button>
+      <Button type="submit" disabled={disabledBtn}>
+        Reservar assento(s)
+      </Button>
     </Form>
   );
 }

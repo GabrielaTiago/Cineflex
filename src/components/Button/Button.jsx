@@ -1,5 +1,5 @@
 import { Btn } from "./Styles";
 
-export function Button({ children }) {
-  return <Btn>{children}</Btn>;
+export function Button({ disabled, children }) {
+  return <Btn disabled={disabled}>{children}</Btn>;
 }

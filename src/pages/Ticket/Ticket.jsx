@@ -44,7 +44,7 @@ export function Ticket() {
         </TicketContainer>
 
         <Link to="/">
-          <Button>Voltar para a Home</Button>
+          <Button disabled={false}>Voltar para a Home</Button>
         </Link>
       </Main>
     </>

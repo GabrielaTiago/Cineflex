@@ -4,7 +4,7 @@ const Btn = styled.button`
   width: 100%;
   max-width: 225px;
   height: 42px;
-  margin-top: 40px;
+  margin-top: 35px;
   color: #ffffff;
   font-size: 18px;
   line-height: 21px;
@@ -14,6 +14,13 @@ const Btn = styled.button`
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  :hover {
+    filter: brightness(0.9);
+  }
+  :disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
 `;
 
 export { Btn };
