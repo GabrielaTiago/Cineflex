@@ -10,6 +10,7 @@ const Main = styled.main`
 const MoviesContainer = styled.div`
   width: 100%;
   height: 100%;
+  padding: 0 2%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
