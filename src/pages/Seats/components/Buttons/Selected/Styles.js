@@ -9,6 +9,10 @@ const Seat = styled.div`
   border-radius: 50%;
   background: #8dd7cf;
   border: 1px solid #1aae9e;
+  cursor: pointer;
+  :hover {
+    filter: brightness(0.9);
+  }
 `;
 
 export { Seat };

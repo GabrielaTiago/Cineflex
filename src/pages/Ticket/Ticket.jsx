@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Header } from "../../components";
 import { useMoviesContext } from "../../contexts";
+import { formatCPF } from "../../utils";
 import { PageTitle, Text, Title, Wrapper } from "./components";
 import { Main, TicketContainer } from "./Styles";
 
@@ -38,7 +39,7 @@ export function Ticket() {
           <Wrapper>
             <Title>Comprador</Title>
             <Text>Nome: {name}</Text>
-            <Text>CPF: {cpf}</Text>
+            <Text>CPF: {formatCPF(cpf)}</Text>
           </Wrapper>
         </TicketContainer>
 

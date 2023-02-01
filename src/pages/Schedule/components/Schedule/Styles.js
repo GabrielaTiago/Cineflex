@@ -9,6 +9,10 @@ const Button = styled.button`
   background-color: #e8833a;
   border-radius: 3px;
   border: none;
+  cursor: pointer;
+  :hover {
+    filter: brightness(0.9);
+  }
 `;
 
 export { Button };
