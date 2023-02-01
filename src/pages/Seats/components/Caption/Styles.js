@@ -15,6 +15,7 @@ const StatusDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  pointer-events: none;
 `;
 
 const StatusCaption = styled.p`
