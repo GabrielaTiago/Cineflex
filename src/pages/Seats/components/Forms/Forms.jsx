@@ -11,17 +11,25 @@ export function Forms() {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
 
-  function form(event) {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     reserveSeats();
-  }
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleCpfChange = (e) => {
+    setCpf(e.target.value);
+  };
 
   async function reserveSeats() {
     setMovieData({
       ...movieData,
-     name,
-     cpf 
-    })
+      name,
+      cpf,
+    });
 
     try {
       const { ids, name, cpf } = movieData;
@@ -32,7 +40,7 @@ export function Forms() {
         cpf,
       });
 
-      if (response === 'OK!') {
+      if (response === "OK!") {
         navigate("/sucesso");
       }
     } catch (err) {
@@ -43,15 +51,13 @@ export function Forms() {
   }
 
   return (
-    <Form onSubmit={form}>
+    <Form onSubmit={handleSubmit}>
       <Box>
         <Label>Nome do comprador:</Label>
         <Input
           type="text"
           placeholder="Digite seu nome..."
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          onChange={handleNameChange}
           value={name}
           required
         />
@@ -61,7 +67,7 @@ export function Forms() {
         <Input
           type="text"
           placeholder="Digite seu CPF..."
-          onChange={(e) => setCpf(e.target.value)}
+          onChange={handleCpfChange}
           value={cpf}
           required
           minLength={11}
