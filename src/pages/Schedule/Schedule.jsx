@@ -24,6 +24,8 @@ export function Schedule() {
         ...movieData,
         title: response.title,
         poster: response.posterURL,
+        schedule: "",
+        weekday: ""
       });
     } catch (err) {
       alert(
