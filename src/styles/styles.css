@@ -9,4 +9,5 @@ body {
   color: #293845;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
