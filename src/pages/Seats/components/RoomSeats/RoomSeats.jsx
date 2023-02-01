@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Available, Selected, Unavailable } from "../Buttons";
 
-export function RoomSeats({ id, number, isAvailable, info, setInfo }) {
+export function RoomSeats({ id, number, isAvailable}) {
   const [selected, setSelected] = useState(false);
 
   const componentProps = {
     id,
     number,
-    info,
-    setInfo,
     selected,
     setSelected,
   };

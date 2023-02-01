@@ -8,7 +8,6 @@ import { Container, Main, SeatsContainer } from "./Styles";
 export function Seats() {
   const { idSeats } = useParams();
   const [seats, setSeats] = useState([]);
-  const [info, setInfo] = useState({ ids: [], number: [], name: "", cpf: "" });
 
   useEffect(() => {
     fetchSeats(idSeats);
@@ -40,14 +39,12 @@ export function Seats() {
                   id={id}
                   number={name}
                   isAvailable={isAvailable}
-                  info={info}
-                  setInfo={setInfo}
                 />
               );
             })}
           </Container>
           <Caption />
-          <Forms info={info} setInfo={setInfo} />
+          <Forms />
         </SeatsContainer>
       </Main>
       <Footer />

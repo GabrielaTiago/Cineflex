@@ -5,7 +5,7 @@ import { useMoviesContext } from "../../../../contexts";
 import { postSeats } from "../../../../services/seatsApi";
 import { Box, Form, Input, Label } from "./Styles";
 
-export function Forms({ info, setInfo }) {
+export function Forms() {
   const { movieData, setMovieData } = useMoviesContext();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -17,28 +17,22 @@ export function Forms({ info, setInfo }) {
   }
 
   async function reserveSeats() {
-    const newData = { ...info };
-    newData.name = name;
-    newData.cpf = cpf;
-    setInfo(newData);
+    setMovieData({
+      ...movieData,
+     name,
+     cpf 
+    })
 
     try {
-      const { ids, number, name, cpf } = newData;
-      
+      const { ids, name, cpf } = movieData;
+
       const response = await postSeats({
         ids,
         name,
         cpf,
       });
 
-      if (response) {
-        setMovieData({
-          ...movieData,
-          ids,
-          number,
-          name,
-          cpf,
-        });
+      if (response === 'OK!') {
         navigate("/sucesso");
       }
     } catch (err) {
